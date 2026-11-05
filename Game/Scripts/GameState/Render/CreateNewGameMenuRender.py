@@ -5,6 +5,11 @@ pygame.font.init()
 from Game.Scripts.GameState.Render.BaseRenderABSClass import RenderABC
 
 
+"""
+Класс, отвечающий за рендер UI меню для создания нового сейва
+"""
+
+
 class CreateNewGameMenuRender(RenderABC):
     def Render(self, screen, mouseCords):
         font = pygame.font.SysFont("Cambria", 100)

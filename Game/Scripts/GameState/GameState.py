@@ -1,6 +1,11 @@
 import pygame
 
 
+"""
+Класс для хранения всей информации об игре
+"""
+
+
 class GameState:
     def __init__(self):
         self.screen = pygame.display.set_mode((1440, 900))
