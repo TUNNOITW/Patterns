@@ -1,5 +1,6 @@
 import pygame
 
+from Game.Scripts.GameState.Handlers.CreateNewGameMenuHandler import CreateNewGameMenuHandler
 from Game.Scripts.GameState.Handlers.StartMenuHandler import StartMenuHandler
 
 """
@@ -10,10 +11,15 @@ from Game.Scripts.GameState.Handlers.StartMenuHandler import StartMenuHandler
 class Handler:
     def __init__(self):
         self.StartMenuHandler = StartMenuHandler()
+        self.CreateNewGameMenuHandler = CreateNewGameMenuHandler()
 
 
-    def Handle(self, mouseCords, mouseButtonsPressed, buttonsRectDict,
-               CurrentScreenName,ScreenNameSetter):
+    def Handle(self, mouseCords, mouseButtonsPressed, keyboardButtonsPressed,
+               buttonsRectDict, saveData, inputData, CurrentScreenName, ScreenNameSetter):
         if CurrentScreenName == "StartMenu":
-            screenName = self.StartMenuHandler.Handle(mouseCords, mouseButtonsPressed, buttonsRectDict)
-            ScreenNameSetter(screenName)
+            self.StartMenuHandler.Handle(mouseCords=mouseCords, mouseButtonsPressed=mouseButtonsPressed,
+                                         buttonsRectDict=buttonsRectDict, ScreenNameSetter=ScreenNameSetter)
+
+        if CurrentScreenName == "CreateNewGameMenu":
+            self.CreateNewGameMenuHandler.Handle(mouseCords=mouseCords, mouseButtonsPressed=mouseButtonsPressed, keyboardButtonsPressed=keyboardButtonsPressed,
+                                                 buttonsRectDict= buttonsRectDict, saveData=saveData, inputData=inputData,)

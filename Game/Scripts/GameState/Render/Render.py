@@ -17,7 +17,7 @@ class Render:
         self.renderCreateNewGameMenu = CreateNewGameMenuRender()
 
 
-    def Render(self, currentScreenName, mouseCords):
+    def Render(self, currentScreenName, mouseCords, saveData, inputData):
         self.screen.fill((0, 0, 0))
 
         renderStartMenuButtonsRectDict = {}
@@ -27,7 +27,8 @@ class Render:
             renderStartMenuButtonsRectDict = self.renderStartMenu.Render(self.screen, mouseCords)
 
         if currentScreenName == "CreateNewGameMenu":
-            renderCreateNewGameMenuButtonsRectDict = self.renderCreateNewGameMenu.Render(self.screen, mouseCords)
+            renderCreateNewGameMenuButtonsRectDict = self.renderCreateNewGameMenu.Render(self.screen, mouseCords,
+                                                                                         saveData, inputData)
 
         buttonsRectDict = {}
 

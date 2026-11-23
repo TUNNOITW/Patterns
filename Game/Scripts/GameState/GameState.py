@@ -18,6 +18,16 @@ class GameState:
 
         self.buttonsRectDict = {}
 
+        self.InputData = {
+            "inputField": "",
+        }
+
+        self.SaveData = {
+            "saveName": "Test",
+            "foodCoef": 1,
+            "enemyCoef": 1
+        }
+
     def EveryTickUpdateData(self):
         self.mouseCords = pygame.mouse.get_pos()
         self.mouseButtonsPressed = pygame.mouse.get_pressed()

@@ -6,11 +6,13 @@ from Game.Scripts.GameState.GameState import GameState
 from Game.Scripts.GameState.Render.Render import Render
 from Game.Scripts.GameState.Handlers.Handler import Handler
 
+
 """
 При использовнии движка pygame, есть такая параша - Исменение размера текста, приложений и других элементов, из-за этого 
-окно Pygame может быть куда меньше, чем надо => игрок не видит половину ока игры, так что включаем 100% изменение, т.к. 
+окно Pygame может быть куда меньше, чем надо => игрок не видит половину окна игры, так что включаем 100% изменение, т.к. 
 я хер знает, как это исправить
 """
+
 
 class Game:
     def __init__(self):
@@ -32,9 +34,12 @@ class Game:
                 if event.type == pygame.QUIT:
                     exit()
 
-            self.gameState.CurrentButtonsRectDictSetter(self.render.Render(self.gameState.currentScreenName, self.gameState.mouseCords))
-            self.handler.Handle(self.gameState.mouseCords, self.gameState.mouseButtonsPressed, self.gameState.buttonsRectDict, self.gameState.currentScreenName,
-                                self.gameState.CurrentScreenNameSetter)
+            self.gameState.CurrentButtonsRectDictSetter(self.render.Render(self.gameState.currentScreenName, self.gameState.mouseCords,
+                                                                           self.gameState.SaveData, self.gameState.InputData))
+            self.handler.Handle(mouseCords= self.gameState.mouseCords, mouseButtonsPressed=self.gameState.mouseButtonsPressed,
+                                keyboardButtonsPressed= self.gameState.keyboardButtonsPressed, buttonsRectDict= self.gameState.buttonsRectDict,
+                                saveData= self.gameState.SaveData, inputData= self.gameState.InputData,
+                                CurrentScreenName= self.gameState.currentScreenName, ScreenNameSetter=  self.gameState.CurrentScreenNameSetter)
             self.gameState.EveryTickUpdateData()
 
             pygame.display.flip()
